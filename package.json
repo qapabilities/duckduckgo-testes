@@ -1,0 +1,14 @@
+{
+  "name": "duckduckgo_testes",
+  "version": "1.0.0",
+  "description": "Primeiros testes com Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "author": "Katiana Maia",
+  "license": "MIT",
+  "dependencies": {
+    "cypress": "^8.3.0"
+  }
+}
