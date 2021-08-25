@@ -1,3 +1,5 @@
+const { it } = require("mocha")
+
 describe('Buscas no duckduckgo.com', () => {
     beforeEach(() => {
         cy.visit('https://duckduckgo.com/')
@@ -24,14 +26,15 @@ it("Deve conter o atributo href no filme destacado", () => {
     cy.get('[name="q"]').type('covid-23')
     cy.get('#search_button_homepage').click()
     cy.get('.module__image').should('have.attr', 'href')
+    //cy.get().should('contain', 'https://en.wikipedia.org/wiki/Songbird_(film)') ????????
 })
 
-it("Deve clicar no filme destacado", () => {
+it.onlyp("Deve clicar no filme destacado", () => {
     cy.get('[name="q"]').type('covid-23')
     cy.get('#search_button_homepage').click()
     cy.get('.module--about__img').should('be.visible')
-    //cy.get('.class="ddgsi.badge-link__close.js-badge-link-dismiss').click()
     cy.get('.module--about__img').click({force:true})
+    cy.url().should('be.equal', 'https://en.wikipedia.org/wiki/Songbird_(film)')
 })
 
 it("Deve clicar em Mais resultados", () => {
@@ -40,4 +43,4 @@ it("Deve clicar em Mais resultados", () => {
     cy.get('.result--more__btn').click()
     cy.get('.results .result').should('have.length', 31)
 })
-})  
+})
